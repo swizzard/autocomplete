@@ -1,3 +1,16 @@
+# Autocomplete-es6
+ES2015-ified version of the original plugin. Mostly minor changes, for now, possibly
+more TK (see below). The goal is to use good new stuff to make the code cleaner &
+clearer, not to fundamentally change anything.
+
+## Potential further changes
+* `.call`/`.apply`: they're *everywhere*, I might be able to refactor a few out with `...`, etc.
+* ???: I haven't done serious JS in years, and I'm just learning ES6, so who even knows.
+
+
+
+## _Original documentation follows below_ 
+
 Autocomplete
 ============
 
