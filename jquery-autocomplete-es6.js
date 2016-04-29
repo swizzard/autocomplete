@@ -37,10 +37,9 @@ export const autocompleteInit = () => {
             VKEY = 86,
             ZKEY = 90,
             YKEY = 89
-    const   ctrlDown = false,
+    let     ctrlDown = false,
             shiftDown = false,
             interval_for_visibility,
-            publics = {},
             accent_map = {
                 'ẚ':'a','Á':'a','á':'a','À':'a','à':'a','Ă':'a','ă':'a','Ắ':'a','ắ':'a','Ằ':'a','ằ':'a','Ẵ':'a','ẵ':'a','Ẳ':'a',
                 'Ẫ':'a','ẫ':'a','Ẩ':'a','ẩ':'a','Ǎ':'a','ǎ':'a','Å':'a','å':'a','Ǻ':'a','ǻ':'a','Ä':'a','ä':'a','Ǟ':'a','ǟ':'a',
@@ -295,10 +294,9 @@ export const autocompleteInit = () => {
          }, sourceObject.ajax))
          
          .done((data) => {
-            done && done.call(this, ...arguments));
-         })
+            done && done.call(this, ...arguments)})
          
-         .fail(function(jqXHR, textStatus) {
+         .fail((jqXHR, textStatus) => {
             if (debug)
                 console.log("Request failed: " + textStatus);
          });
@@ -339,7 +337,7 @@ export const autocompleteInit = () => {
                 options.source.call(options, query, (items) => {
                     datasource = [items];
                     safe_call.call(options, callback, [query]);
-                }, datasource, 0]);
+                }, datasource, 0);
         } else {
             for (source = 0; source < options.source.length; source += 1) {
                 if ($.isArray(options.source[source])) {
@@ -361,7 +359,7 @@ export const autocompleteInit = () => {
                         }
                             
                         safe_call.call(options,callback,[query]);
-                    }, datasource, source]);
+                    }, datasource, source);
                 } else {
                     switch (options.source[source].type) {
                         case 'remote':
