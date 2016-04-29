@@ -121,35 +121,35 @@ export const autocompleteInit = () => {
                             : [style[t], style[r], style[b], style[l]]).join(' ');
             }
 
-            function CSSStyleDeclaration(element) {
-                let    currentStyle = element.currentStyle,
-                    style = this,
-                    property,
-                    fontSize = getPixelSize(element, currentStyle, 'fontSize', null);
-                
-                for (property in currentStyle) {
-                    if (Object.prototype.hasOwnProperty.call(currentStyle, property)) {
-                        if (/width|height|margin.|padding.|border.+W/.test(property) && style[property] !== 'auto') {
-                            style[property] = getPixelSize(element, currentStyle, property, fontSize) + 'px';
-                        } else if (property === 'styleFloat') {
-                            style.float = currentStyle[property];
-                        } else {
-                            style[property] = currentStyle[property];
-                        }
-                    }
-                }
-
-                setShortStyleProperty(style, 'margin');
-                setShortStyleProperty(style, 'padding');
-                setShortStyleProperty(style, 'border');
-
-                style.fontSize = fontSize + 'px';
-
-                return style;
-            }
+            
 
             class CSSStyleDeclaration {
-                constructor: CSSStyleDeclaration
+                constructor(element) {
+                    let currentStyle = element.currentStyle,
+                        style = this,
+                        property,
+                        fontSize = getPixelSize(element, currentStyle, 'fontSize', null);
+                    
+                    for (property in currentStyle) {
+                        if (Object.prototype.hasOwnProperty.call(currentStyle, property)) {
+                            if (/width|height|margin.|padding.|border.+W/.test(property) && style[property] !== 'auto') {
+                                style[property] = getPixelSize(element, currentStyle, property, fontSize) + 'px';
+                            } else if (property === 'styleFloat') {
+                                style.float = currentStyle[property];
+                            } else {
+                                style[property] = currentStyle[property];
+                            }
+                        }
+                    }
+
+                    setShortStyleProperty(style, 'margin');
+                    setShortStyleProperty(style, 'padding');
+                    setShortStyleProperty(style, 'border');
+
+                    style.fontSize = fontSize + 'px';
+
+                    return style;
+                }
                 getPropertyPriority() {}
                 getPropertyValue(prop) {
                     return this[prop] || '';
